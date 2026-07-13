@@ -122,7 +122,6 @@ nav.scrolled .nl:hover { background: var(--g100); color: var(--g700); }
   position: relative; overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
 }
-.hero picture { position: absolute; inset: 0; z-index: 0; }
 .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,18,7,.97) 0%, rgba(5,18,7,.6) 55%, rgba(10,28,12,.4) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 0 5% 80px; }
@@ -646,26 +645,26 @@ footer a { color: var(--g500); text-decoration: none; font-weight: 600; }
 
   /* ── HERO MOBILE ── */
   .hero {
-    min-height: 100svh;
+    min-height: 88vh;
     justify-content: flex-start; /* texto no topo */
   }
-  /* imagem cobre todo o hero, atrás do texto */
+  /* imagem cobre todo o hero, atrás do texto, ancorada no topo */
   .hero-img {
     object-fit: cover;
-    object-position: center center;
-    opacity: .65;
+    object-position: center top;
+    opacity: .85;
   }
-  /* overlay mais forte no topo para legibilidade do texto */
+  /* overlay leve: só o suficiente para o texto ler bem, sem escurecer demais */
   .hero-overlay {
     background: linear-gradient(to bottom,
-      rgba(5,18,7,.92) 0%,
-      rgba(5,18,7,.6) 40%,
-      rgba(5,18,7,.55) 100%
+      rgba(5,18,7,.55) 0%,
+      rgba(5,18,7,.25) 40%,
+      rgba(5,18,7,.6) 100%
     );
   }
-  /* conteúdo no topo */
+  /* conteúdo colado ao topo, sobre a imagem */
   .hero-content {
-    padding: 24px 5% 40px;
+    padding: 30px 5% 48px;
     max-width: 100%;
   }
   .hero h1 { font-size: 48px; margin-bottom: 14px; }
@@ -747,10 +746,7 @@ footer a { color: var(--g500); text-decoration: none; font-weight: 600; }
 
 <!-- HERO -->
 <div class="hero">
-  <picture>
-    <source media="(max-width: 720px)" srcset="https://res.cloudinary.com/dnnnn7njk/image/upload/v1780492300/topomobile_bqydlx.jpg">
-    <img class="hero-img" src="https://res.cloudinary.com/dnnnn7njk/image/upload/v1779529819/topo_mv_skhxbq.jpg" alt="">
-  </picture>
+  <img class="hero-img" src="https://res.cloudinary.com/dnnnn7njk/image/upload/v1779529819/topo_mv_skhxbq.jpg" alt="">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge r"><div class="bdot"></div>Eleições 2026 · Comunicação Política</div>
