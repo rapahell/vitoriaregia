@@ -841,12 +841,9 @@ footer p {
 
 /* ─── PLANTA LADO DOS SERVIÇOS ─── */
 #servicos {
-  display: grid;
-  grid-template-columns: 1fr 650px;
-  align-items: stretch;
-  gap: 0;
+  display: block;
 }
-.servicos-main { grid-column: 1; }
+.servicos-main { width: 100%; }
 .servicos-planta {
   grid-column: 2;
   position: sticky; top: 0;
@@ -1114,12 +1111,11 @@ footer p {
       <div class="video-num" aria-hidden="true">02</div>
       <span class="video-label">Produção Audiovisual</span>
       <h2 class="video-title reveal">
-        CADA<br>FRAME<br>
-        <em>é uma escolha.</em>
+        GRANDES<br>IDEIAS<br>
+        <em>brotam aqui.</em>
       </h2>
       <p class="video-desc reveal">
-        Da propaganda ao audiovisual — criamos imagens que
-        ficam, que incomodam, que ficam na cabeça.
+        Da criação à produção.
       </p>
     </div>
     <div class="video-right">
@@ -1152,10 +1148,9 @@ footer p {
 <section id="servicos">
 <div class="servicos-main">
   <div class="servicos-header">
-    <div class="servicos-header-num" aria-hidden="true">03</div>
     <div class="servicos-header-text">
       <span class="servicos-header-label">— O que fazemos</span>
-      <h2 class="servicos-header-title">ESPECIALI-<br>DADES</h2>
+      <h2 class="servicos-header-title">ESPECIALIDADES</h2>
     </div>
   </div>
 
@@ -1236,10 +1231,6 @@ footer p {
   </div>
 </div><!-- /servicos-main -->
 
-<div class="servicos-planta">
-  <img src="https://res.cloudinary.com/dnnnn7njk/image/upload/v1777060898/planta_carnivora_dn5gn6.png" alt="Planta Carnívora — Vitória Régia">
-</div>
-
 </section>
 
 <!-- ══ MARQUEE ══ -->
@@ -1272,8 +1263,7 @@ footer p {
         <span class="sub-line">começa aqui.</span>
       </h2>
       <p class="contato-sub reveal">
-        Pronto pra semear algo novo?<br>
-        Adoramos projetos que incomodam.
+        Pronto pra semear algo novo?
       </p>
       <div class="contato-links">
         <a href="mailto:contato@vitoria-regia.com" class="contato-link">
