@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0b2a0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" href="a/capa.webp">
 <style>
 /* Layout: rolagem contínua de faixas no ritmo da apresentação. Imagem onde a imagem é o conteúdo (capa, flor, mapa, fotos), HTML onde há texto e número. Toda faixa tem um verde por trás, então nada fica branco enquanto a imagem carrega ou quando ela não cobre a tela. */
@@ -32,6 +32,7 @@
   --f-display:"Bebas Neue","Oswald","Arial Narrow",Impact,sans-serif;
   --f-head:"Archivo","Arial Black",Arial,sans-serif;
   --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-sora:"Sora","Instrument Sans",Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --wrap:1200px;
   color-scheme:light;
@@ -93,19 +94,19 @@ h3{font-family:var(--f-head);font-weight:700;font-size:20px;line-height:1.2;colo
 .leaf .px img{object-position:right center}
 .leaf::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--folha) 0%,rgba(15,58,18,.82) 38%,rgba(15,58,18,.15) 100%)}
 .about{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}
-.about h2{font-family:var(--f-body);font-weight:500;text-transform:none;font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-.015em;color:var(--creme)}
-.verse{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;font-size:clamp(18px,1.9vw,23px);line-height:1.5;color:#e7df9e}
+.about h2{font-family:var(--f-sora);font-weight:400;text-transform:none;font-size:clamp(32px,4vw,52px);line-height:1.15;letter-spacing:-.01em;color:var(--creme)}
+.verse{font-family:var(--f-sora);font-weight:500;letter-spacing:-.005em;display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;font-size:clamp(18px,1.9vw,23px);line-height:1.5;color:#e7df9e}
 .verse p{margin:0}
 .verse p:last-child{padding-top:2.4em}
-.facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(241,236,214,.2);font-size:15px;color:#d3dbc4}
+.facts{font-family:var(--f-sora);display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(241,236,214,.2);font-size:15px;color:#d3dbc4}
 .facts div{flex:1 1 210px;min-width:0}
-.facts b{display:block;color:var(--creme)}
+.facts b{display:block;color:var(--creme);font-weight:700}
 .about-art{display:grid;justify-items:center;gap:26px}
 .lotus{width:min(100%,480px);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);animation:float 7s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .brand-lock{display:grid;justify-items:end;gap:12px;justify-self:end}
 .brand-lock img{width:230px}
-.pill{font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;background:var(--rosa);color:#2a0f1b;padding:5px 10px}
+.pill{font-family:var(--f-mono);font-weight:500;font-size:14px;letter-spacing:.08em;text-transform:uppercase;background:var(--rosa);color:#2a0f1b;padding:5px 10px}
 
 /* ---------- serviços ---------- */
 .svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
