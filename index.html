@@ -310,12 +310,23 @@ header.open .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(
 .sobre-texto p + p { margin-top: 18px; }
 .sobre-texto .lead { margin-top: 28px; }
 .sobre-img { position: relative; }
-.sobre-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; }
+.slides { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--verde-escuro); border-radius: 2px; }
+.slides img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.03);
+  transition: opacity 1.4s ease, transform 6s ease-out;
+}
+.slides img.ativo { opacity: 1; transform: scale(1); }
+.slides-dots { position: absolute; right: 14px; bottom: 12px; display: flex; gap: 6px; z-index: 2; }
+.slides-dots button {
+  width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+  background: rgba(255,255,255,0.45); transition: background .3s, transform .3s;
+}
+.slides-dots button.ativo { background: var(--lima); transform: scale(1.3); }
 .sobre-img .selo {
-  position: absolute; left: -32px; bottom: 40px;
+  position: static; max-width: none;
   background: var(--verde); color: var(--branco);
-  padding: 22px 26px; max-width: 250px;
-  font-size: 14px; line-height: 1.5;
+  padding: 20px 24px; font-size: 14px; line-height: 1.5;
 }
 .sobre-img .selo strong {
   display: block; font-family: 'Barlow Condensed', sans-serif;
@@ -511,7 +522,6 @@ footer { background: var(--tinta); color: rgba(255,255,255,0.5); padding: 56px 0
 
   #sobre .grid, .sec-head, #metodo .grid, #video .grid, #contato .grid { grid-template-columns: 1fr; gap: 44px; }
   .sec-head { margin-bottom: 40px; }
-  .sobre-img .selo { left: 16px; bottom: 16px; }
   .servicos-grid { grid-template-columns: 1fr; }
   .servico, .servico + .servico { padding: 32px 0; border-right: none; border-top: 1px solid var(--linha); }
   .relatorio { position: static; }
@@ -550,7 +560,6 @@ footer { background: var(--tinta); color: rgba(255,255,255,0.5); padding: 56px 0
   .lead { font-size: 15px; }
   .eyebrow { font-size: 10px; letter-spacing: 2px; }
 
-  .sobre-img img { aspect-ratio: 4/3; }
   .sobre-img .selo { position: static; max-width: none; padding: 18px 20px; }
   .sobre-img .selo strong { font-size: 26px; }
   .pilares-mini span { font-size: 12px; }
@@ -728,7 +737,17 @@ footer { background: var(--tinta); color: rgba(255,255,255,0.5); padding: 56px 0
       </div>
     </div>
     <div class="sobre-img reveal">
-      <img src="https://www.vitoria-regia.com/apresentacao/a/obra-2.webp" alt="Registro de obra da Ferrovia de Integração Centro-Oeste (FICO)" width="800" height="1000" loading="lazy">
+      <div class="slides" id="slides">
+        <img src="obras/obra-1.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" class="ativo" loading="eager">
+        <img src="obras/obra-2.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-3.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-4.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-5.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-6.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-7.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <img src="obras/obra-8.webp" alt="Registro aéreo de obra ferroviária acompanhada pela Vitória-Régia" width="1600" height="900" loading="lazy">
+        <div class="slides-dots" id="slidesDots"><button aria-label="Foto 1" class="ativo"></button><button aria-label="Foto 2"></button><button aria-label="Foto 3"></button><button aria-label="Foto 4"></button><button aria-label="Foto 5"></button><button aria-label="Foto 6"></button><button aria-label="Foto 7"></button><button aria-label="Foto 8"></button></div>
+      </div>
       <div class="selo"><strong>Vale · FICO</strong>Comunicação da Ferrovia de Integração Centro-Oeste desde outubro de 2024.</div>
     </div>
   </div>
@@ -1013,6 +1032,23 @@ footer { background: var(--tinta); color: rgba(255,255,255,0.5); padding: 56px 0
       window.startHeroVideo = () => { const p = hv.play(); if (p) p.catch(() => hv.remove()); };
     }
   }
+
+  // Slideshow das obras
+  (function () {
+    const box = document.getElementById('slides'); if (!box) return;
+    const fotos = [...box.querySelectorAll('img')], dots = [...document.querySelectorAll('#slidesDots button')];
+    let i = 0, timer;
+    const ir = n => {
+      fotos[i].classList.remove('ativo'); dots[i].classList.remove('ativo');
+      i = (n + fotos.length) % fotos.length;
+      fotos[i].loading = 'eager';
+      fotos[i].classList.add('ativo'); dots[i].classList.add('ativo');
+      fotos[(i + 1) % fotos.length].loading = 'eager';
+    };
+    const play = () => { clearInterval(timer); timer = setInterval(() => ir(i + 1), 4500); };
+    dots.forEach((d, n) => d.addEventListener('click', () => { ir(n); play(); }));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+  })();
 
   // Menu mobile
   document.getElementById('menuToggle').addEventListener('click', () => { const o = header.classList.toggle('open'); document.body.classList.toggle('menu-aberto', o); });
